@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 #
 # mem_usage - detailed process memory statistics.
 #
-# © Andy Wingo
-# © Mikhail Gusarov
+# Based on mem_usage.py put to public domain by Andy Wingo <wingo@pobox.com>
+#
+# © 2009 Mikhail Gusarov, MIT/X11 license.
 #
 
 import sys
@@ -33,7 +33,7 @@ class VMA(dict):
          self.major, self.minor, self.inode, self.filename) = args
 
 def parse_smaps(pid):
-    if re.match(r"\d+", pid):
+    if re.match(r"\d+$", pid):
         maps = open('/proc/' + pid + '/smaps', 'r')
     else:
         maps = open(pid, 'r')
